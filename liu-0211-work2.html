@@ -27,18 +27,30 @@ main a:focus-visible,main button:focus-visible,main input:focus-visible,main tex
 }
 @media(max-width:360px){.brand-type strong{font-size:28px}.brand-type{gap:9px}.brand-sub{letter-spacing:1px}.brand-logo{width:42px;height:42px}.brand{gap:9px}.nav{font-size:18px}.signup-table tr:last-child td{display:block}.signup-table input[type=submit],.signup-table input[type=reset]{width:100%}}
 
-/* 首屏图文分栏：照片按原始比例完整显示，文字不覆盖画面。 */
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 完整现场照片：原比例决定首屏高度；标题叠于左侧暗部，不裁切上下画面。 */
 .hero{background:var(--black);color:var(--white)}
-.hero-layout{width:calc(100% - 80px);max-width:1760px;margin:0 auto;display:grid;grid-template-columns:minmax(300px,.72fr) minmax(0,1.8fr);align-items:center;gap:0;padding:0 0 12px}
-.hero-content{min-width:0;padding:12px 0 12px clamp(0px,calc((100vw - 1600px)/2),80px)}
-.hero h1{font-size:clamp(50px,4.8vw,84px);line-height:1.17;letter-spacing:-3px;font-weight:950;margin:0 0 28px}
-.hero h1 em{font-style:normal;color:var(--yellow);font-size:.6em;margin-left:.12em}
-.hero-desc{font-size:22px;line-height:1.8;font-weight:700;margin:0 0 30px;max-width:380px}
-.hero-visual{min-width:0;margin:0;-webkit-mask-image:linear-gradient(to right,transparent,#000 12%,#000 88%,transparent),linear-gradient(to bottom,transparent,#000 14%,#000 86%,transparent);mask-image:linear-gradient(to right,transparent,#000 12%,#000 88%,transparent),linear-gradient(to bottom,transparent,#000 14%,#000 86%,transparent);-webkit-mask-composite:source-in;mask-composite:intersect}
+.hero-layout{display:grid;grid-template-columns:minmax(0,1fr);width:100%;margin:0;isolation:isolate}
+.hero-visual{grid-area:1/1;min-width:0;margin:0;align-self:center}
 .hero-photo{display:block;position:static;width:100%;height:auto;max-width:100%;object-fit:contain}
-@media(min-width:761px) and (max-width:1100px){.hero-layout{grid-template-columns:minmax(280px,.85fr) minmax(0,1.35fr);gap:26px}.hero h1{font-size:52px}.hero-desc{font-size:20px}.hero .button{font-size:24px;padding:14px 24px}}
-@media(max-width:900px){.hero-layout{grid-template-columns:1fr;padding:18px 0 32px;gap:26px}.hero-visual{grid-row:1}.hero-content{padding:0}.hero h1{font-size:62px}.hero-desc{max-width:none}}
-@media(max-width:760px){.hero-layout{width:calc(100% - 36px);padding:0 0 30px;gap:8px}.hero-visual{margin:0 -18px}.hero h1{font-size:clamp(40px,11.5vw,62px);line-height:1.15;letter-spacing:-2px;margin-bottom:20px}.hero-desc{font-size:20px;margin-bottom:24px}.hero .button{width:100%;font-size:23px;min-height:55px}}
+.hero-content{grid-area:1/1;z-index:1;align-self:center;min-width:0;width:34%;margin-left:4.5%;padding:24px 0}
+.hero h1{font-size:clamp(44px,5.2vw,100px);line-height:1.15;letter-spacing:-3px;font-weight:950;margin:0 0 28px}
+.hero h1 em{font-style:normal;color:var(--yellow);font-size:.6em;margin-left:.1em}
+.hero-desc{font-size:clamp(18px,1.5vw,24px);line-height:1.8;font-weight:700;margin:0 0 30px;max-width:430px}
+@media(min-width:761px) and (max-width:1100px){.hero h1{margin-bottom:20px;letter-spacing:-2px}.hero-desc{margin-bottom:22px}.hero .button{font-size:23px;padding:12px 22px;gap:20px}}
+@media(max-width:760px){.hero-layout{display:flex;flex-direction:column}.hero-visual{order:0;width:100%}.hero-content{order:1;width:auto;margin:0;padding:24px 22px 30px}.hero h1{font-size:clamp(40px,11.5vw,62px);letter-spacing:-2px;margin-bottom:20px}.hero-desc{max-width:none;font-size:20px;margin-bottom:24px}.hero .button{width:100%;font-size:23px;min-height:55px}}
 </style>
 </head>
 <body id="top">
@@ -49,7 +61,7 @@ main a:focus-visible,main button:focus-visible,main input:focus-visible,main tex
   <header class="site-header"><div class="wrap header-inner"><a class="brand" href="#top" aria-label="鼓点打击乐社，返回顶部"><img class="brand-logo" src="gudian-logo.svg" alt="鼓点鼓点标志" width="96" height="96"><span class="brand-type"><strong>鼓点</strong><span class="brand-sub">打击乐社</span></span></a>
     <!-- 要求2：五对页内锚点链接。 -->
     <nav class="nav" aria-label="主要导航"><a href="#intro">社团简介</a><a href="#activities">活动安排</a><a href="#showcase">风采展示</a><a href="#stories">社员故事</a><a class="nav-join" href="#signup">在线报名 <span aria-hidden="true">↗</span></a></nav></div></header>
-  <section class="hero" aria-labelledby="hero-title"><div class="hero-layout"><div class="hero-content"><h1 id="hero-title">把心跳，<br>敲成现场<em>▪</em></h1><p class="hero-desc">2026 春季招新 · 零基础也能加入</p><a class="button" href="#signup">加入鼓点 <span aria-hidden="true">↗</span></a></div><figure class="hero-visual"><img class="hero-photo" src="club-hero.webp?v=expanded-20261104" alt="三位大学生在金色舞台灯光下合奏鼓组、箱鼓与手鼓的AI创作场景" width="1586" height="992" fetchpriority="high"></figure></div></section><div class="beat-strip" aria-label="乐器与合奏方向"><span>鼓组</span><span>手鼓</span><span>箱鼓</span><span>合奏</span></div>
+  <section class="hero" aria-labelledby="hero-title"><div class="hero-layout"><div class="hero-content"><h1 id="hero-title">把心跳，<br>敲成现场<em>▪</em></h1><p class="hero-desc">2026 春季招新 · 零基础也能加入</p><a class="button" href="#signup">加入鼓点 <span aria-hidden="true">↗</span></a></div><figure class="hero-visual"><img class="hero-photo" src="club-hero.webp?v=live-20261104" alt="金色现场灯光下两位大学生鼓手充满力量地演奏打击乐的AI创作场景" width="1672" height="941" fetchpriority="high"></figure></div></section><div class="beat-strip" aria-label="乐器与合奏方向"><span>鼓组</span><span>手鼓</span><span>箱鼓</span><span>合奏</span></div>
   <main class="main-shell"><section class="section" id="intro" aria-labelledby="intro-title"><div class="section-heading"><div><div class="eyebrow">ABOUT THE CLUB</div><p class="section-kicker">社团简介</p><h2 id="intro-title">每一种声音，<br>都有你的位置。</h2></div><p class="section-lead">先学会倾听，再一起发声。这里容得下第一次拿起鼓槌的紧张，也接得住你想试的新节奏。</p></div><div class="instrument-grid"><figure class="instrument-card"><div class="instrument-photo" role="img" aria-label="鼓组与金色鼓镲特写AI图"></div><figcaption>鼓组</figcaption></figure><figure class="instrument-card"><div class="instrument-photo" role="img" aria-label="双手演奏非洲鼓特写AI图"></div><figcaption>手鼓</figcaption></figure><figure class="instrument-card"><div class="instrument-photo" role="img" aria-label="木质箱鼓演奏特写AI图"></div><figcaption>箱鼓</figcaption></figure></div><div class="prose"><p class="section-brief">不用先会打鼓，也能找到自己的位置。从握棒、数拍到一起合奏，我们把每一步拆开练。你带着好奇来，伙伴陪你慢慢进步。</p><ul class="quick-points"><li>零基础入门</li><li>多种乐器体验</li><li>小组合奏</li></ul><details class="reading"><summary>了解社团日常与练习方式</summary><div class="reading-body"><article><h3>从第一下鼓点开始</h3><p>鼓点打击乐社是一群喜欢节奏的同学相聚的地方。有人听见架子鼓就忍不住跟着点头，有人常在课桌边轻轻敲出旋律，也有人只想在忙碌的课程之外找到一件可以慢慢坚持的事。来到这里，不需要先证明自己会演奏。我们更在意你是否愿意认真听一次示范，耐心重复一个动作，并在伙伴需要时把速度放慢。第一次握住鼓棒时的生疏、第一次跟上节拍时的惊喜，都是学习的一部分。社团希望把这些小小的开始连在一起，让每位成员都有机会找到自己的声音。</p></article>
 <article><h3>认识打击乐的不同声音</h3><p>打击乐并不只有舞台中央的架子鼓。手掌落在手鼓的边缘与中心，会发出不同的音色；箱鼓看上去像一只简单的木箱，却能用低音和清脆的击打声撑起一首歌；沙锤、铃鼓等小乐器，也能在合奏中添上恰到好处的层次。社团的入门体验会轮流介绍这些乐器，让大家先听、再看、最后亲手尝试。选择方向时，我们鼓励根据自己的兴趣和身体感受作决定。有些人喜欢鼓组的力量，有些人偏爱手鼓围坐演奏的亲近感，这些选择都能在合奏里找到位置。</p></article>
 <article><h3>零基础也有清楚的起点</h3><p>新成员的练习从坐姿、握棒和放松开始，不急着追求速度。我们先用拍手分辨稳定的四拍，再借助节拍器练习双手交替，逐步认识休止、重音与简单的节奏型。带练成员会把一段示范拆成几个短小步骤，确认大家能听懂、能模仿，再把它们连起来。暂时跟不上时，可以只演奏其中的一拍，也可以先在练习垫上完成动作。课堂里不会把陌生术语当成门槛；不清楚就停下来问，问得具体，反而能帮助旁边的伙伴一起弄明白。</p></article>
